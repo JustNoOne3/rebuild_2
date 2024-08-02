@@ -59,30 +59,34 @@ Route::get('user/month13ths/submit', Month13thSubmit::class)
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 Route::get('user/wairs/select', WairSelect::class)
     ->name('user-wairs-select')
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
     
-Route::get('user/wairs/accident-report', AccidentCreate::class)
-    ->name('user-wairs-accident_report')
+Route::get('user/accident-report', AccidentCreate::class)
+    ->name('user-accident_report')
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
 
-Route::get('user/wairs/illness-report', IllnessCreate::class)
-    ->name('user-wairs-illness_report')
+Route::get('user/illness-report', IllnessCreate::class)
+    ->name('user-illness_report')
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
 
-Route::get('user/wairs/accident-illness-report', AccIllCreate::class)
-    ->name('user-wairs-accident_illness_report')
+Route::get('user/accident-illness-report', AccIllCreate::class)
+    ->name('user-accident_illness_report')
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
 
-Route::get('user/wairs/no-accident-illness-report', NoAccIllCreate::class)
-    ->name('user-wairs-no_accident_illness_report')
+Route::get('user/no-accident-illness-report', NoAccIllCreate::class)
+    ->name('user-no_accident_illness_report')
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('user/tele-reports/head-report', TeleHeadCreate::class)
     ->name('user-telecommuting-head_report')

@@ -34,6 +34,7 @@ class NIAReport extends Model
      protected $keyType = 'string';
 
      protected $fillable = [
+        'id',
         'nia_owner',
         'nia_nationality',
         'nia_safetyOfficer',

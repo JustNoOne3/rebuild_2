@@ -35,6 +35,8 @@ class UserPanelProvider extends PanelProvider
             ->id('user')
             ->path('user')
             ->viteTheme('resources/css/filament/user/theme.css')
+            ->topNavigation()
+            ->breadcrumbs(false)
 
             ->login(Login::class)
             ->registration(Register::class)
@@ -46,7 +48,6 @@ class UserPanelProvider extends PanelProvider
             ->colors(fn (GeneralSettings $settings) => $settings->site_theme)
             ->databaseNotifications()->databaseNotificationsPolling('30s')
             ->globalSearchKeyBindings(['command+k', 'ctrl+k'])
-            ->topNavigation()
 
             ->passwordReset()
             ->loginRouteSlug('login')
@@ -65,8 +66,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/User/Widgets'), for: 'App\\Filament\\User\\Widgets')
             ->widgets([
-                // Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
+                //
             ])
             ->middleware([
                 EncryptCookies::class,

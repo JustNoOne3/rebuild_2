@@ -70,6 +70,12 @@
        .body{
             background-color: #454A54;   
         }
+        .fi-sidebar{
+            display: none;
+        }
+        .fi-breadcrumbs{
+            display: none;
+        }
     </style>
     @if (Auth::user()->est_id != null)
         @php

@@ -32,6 +32,7 @@ class IllnessReport extends Model
      protected $keyType = 'string';
 
     protected $fillable = [
+        'id',
         'ip_owner',
         'ip_nationality',
         'ip_engineering',

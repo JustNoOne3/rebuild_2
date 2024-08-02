@@ -28,26 +28,18 @@
             opacity: 90%;
         }
 
-        /* Admin Page Css */
-        .fi-sidebar {
-            opacity: 90%;
-            background-image : url({{asset('images/sidebar-bg.png')}});
-            background-size: cover;
-            background-position: center bottom;
-            background-repeat: no-repeat;
+        .fi-sidebar{
+            display: none;
         }
-        .dark .fi-sidebar {
-            background-image : url({{asset('images/sidebar-bg2.png')}});
-            background-size: cover;
-            background-position: center bottom;
-            background-repeat: no-repeat;
-        }
-        .dark .fi-topbar nav{
-            background-color: #454A54;
-        }
-        .fi-sidebar-header{
-            background-color: #140F50;
+        .fi-breadcrumbs{
+            display: none;
         }
     </style>
-    {{$this->form}}
+    @if(Auth::user()->est_id == null)
+        @php
+            redirect('user/register-est');
+        @endphp
+    @else
+        {{ $this->form }}
+    @endif
 </x-filament-panels::page>

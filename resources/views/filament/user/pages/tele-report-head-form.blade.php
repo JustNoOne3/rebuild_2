@@ -38,6 +38,12 @@
             border-top-left-radius: 0.5rem; /* 8px */
             border-top-right-radius: 0.5rem; /* 8px */
         }
+        .fi-sidebar{
+            display: none;
+        }
+        .fi-breadcrumbs{
+            display: none;
+        }
     </style>
     <form wire:submit="create">
         {{ $this->form }}

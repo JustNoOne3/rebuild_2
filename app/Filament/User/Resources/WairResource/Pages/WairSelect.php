@@ -12,19 +12,19 @@ class WairSelect extends Page
     protected static string $view = 'filament.user.resources.wair-resource.pages.wair-select';
 
     public function accident(){
-        return redirect('user/wairs/accident-report');
+        return redirect('user/accident-report');
     }
 
     public function illness(){
-        return redirect('user/wairs/illness-report');
+        return redirect('user/illness-report');
     }
 
     public function both(){
-        return redirect('user/wairs/accident-illness-report');
+        return redirect('user/accident-illness-report');
         
     }
 
     public function noIncident(){
-        return redirect('user/wairs/no-accident-illness-report');
+        return redirect('user/no-accident-illness-report');
     }
 }

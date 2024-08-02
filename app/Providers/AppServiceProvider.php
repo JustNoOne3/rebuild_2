@@ -13,12 +13,12 @@ use App\Models\Month13th;
 use App\Observers\Month13thObserver;
 use App\Models\AccidentReport;
 use App\Observers\AccRepObserver;
-use App\Http\Responses\LogoutResponse;
-use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
 use App\Models\IllnessReport;
 use App\Observers\IllRepObserver;
 use App\Models\IAReport;
 use App\Observers\AccIllObserver;
+use App\Models\NIAReport;
+use App\Observers\NoAccIllObserver;
 use App\Models\TeleReportHead;
 use App\Observers\TeleHeadObserver;
 use App\Models\TeleReportBranch;
@@ -29,6 +29,8 @@ use Livewire;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Responses\LogoutResponse;
+use Filament\Http\Responses\Auth\Contracts\LogoutResponse as LogoutResponseContract;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -59,6 +61,7 @@ class AppServiceProvider extends ServiceProvider
         AccidentReport::observe(AccRepObserver::class);
         IllnessReport::observe(IllRepObserver::class);
         IAReport::observe(AccIllObserver::class);
+        NIAReport::observe(NoAccIllObserver::class);
         TeleReportHead::observe(TeleHeadObserver::class);
         TeleReportBranch::observe(TeleBranchObserver::class);
         Employees::observe(EmpObserver::class);

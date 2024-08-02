@@ -27,6 +27,12 @@
         .dark .fi-topbar nav{
             opacity: 90%;
         }
+        .fi-sidebar{
+            display: none;
+        }
+        .fi-breadcrumbs{
+            display: none;
+        }
     </style>
     
 </x-filament-panels::page>

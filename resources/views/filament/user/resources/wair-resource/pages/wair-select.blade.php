@@ -33,31 +33,14 @@
         .fi-modal-trigger{
             opacity: 100%;
         } */
-
-        /* Admin Page Css */
-        .fi-sidebar {
-            opacity: 90%;
-            background-image : url({{asset('images/sidebar-bg.png')}});
-            background-size: cover;
-            background-position: center bottom;
-            background-repeat: no-repeat;
+         
+        .fi-sidebar{
+            display: none;
         }
-        .dark .fi-sidebar {
-            background-image : url({{asset('images/sidebar-bg2.png')}});
-            background-size: cover;
-            background-position: center bottom;
-            background-repeat: no-repeat;
+        .fi-breadcrumbs{
+            display: none;
         }
-        .dark .fi-topbar nav{
-            background-color: #454A54;
-        }
-        .fi-sidebar-header{
-            background-color: #140F50;
-        }
-        .grid{
-            /* margin: auto; */
-        }
-
+ 
         .mainDiv{
             filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
         }
@@ -117,6 +100,11 @@
     </style>
     @livewireStyles()
     @livewireScripts()
+    @if(Auth::user()->est_id == null)
+        @php
+            redirect('user/register-est');
+        @endphp
+    @endif
     <div class="center bg-white rounded-lg mainDiv">
         <div class="grid grid-flow-rows firstDiv">
             <button wire:click="illness" class="flex justify-start illRep">

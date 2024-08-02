@@ -33,6 +33,7 @@ class IAReport extends Model
      protected $keyType = 'string';
 
      protected $fillable = [
+        'id',
         'ia_owner',
         'ia_nationality',
         'ia_dateTime',

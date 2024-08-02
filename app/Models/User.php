@@ -106,6 +106,9 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         if(config('filament-shield.focal.enabled', false)){
             FilamentShield::createRole(name: config('filament-shield.focal.name', 'focal'));
         }
+        if(config('filament-shield.focal.enabled', false)){
+            FilamentShield::createRole(name: config('filament-shield.focal_custom.name', 'focal_custom'));
+        }
         if(config('filament-shield.bwc_focal.enabled', false)){
             FilamentShield::createRole(name: config('filament-shield.bwc_focal.name', 'bwc_focal'));
         }
@@ -134,7 +137,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         } elseif ($panel->getId() === 'bwc_focal') {
             return $this->hasRole('bwc_focal') && $this->hasVerifiedEmail();
         } elseif ($panel->getId() === 'focal') {
-            return $this->hasRole('focal') && $this->hasVerifiedEmail();
+            return ($this->hasRole('focal') || $this->hasRole('focal_custom')) && $this->hasVerifiedEmail();
         } else {
             return false;
         }

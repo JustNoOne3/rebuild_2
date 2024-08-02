@@ -26,7 +26,7 @@ class NoAccIllObserver
         $uuid = 'ill-' . substr($uuid, 0, 12) . '-' . $microseconds;
 
         $nIAReport->id = $uuid;
-
+        
         $wair = Wair::create(
             [
                 'wairs_reportId' => $uuid,
