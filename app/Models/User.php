@@ -23,6 +23,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Edwink\FilamentUserActivity\Traits\UserActivityTrait;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use BezhanSalleh\FilamentShield\Facades\FilamentShield;
+use BezhanSalleh\FilamentShield\Support\Utils;
 
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName, HasMedia
@@ -31,6 +34,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
     use HasUuids, HasRoles;
     use HasApiTokens, HasFactory, Notifiable;
     use TwoFactorAuthenticatable;
+    use HasPanelShield;
 
      /**
      * The primary key associated with the table.
@@ -94,14 +98,52 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         return $this->username;
     }
 
+    protected static function booted(): void
+    {
+        if(config('filament-shield.admin.enabled', false)){
+            FilamentShield::createRole(name: config('filament-shield.admin.name', 'admin'));
+        }
+        if(config('filament-shield.focal.enabled', false)){
+            FilamentShield::createRole(name: config('filament-shield.focal.name', 'focal'));
+        }
+        if(config('filament-shield.bwc_focal.enabled', false)){
+            FilamentShield::createRole(name: config('filament-shield.bwc_focal.name', 'bwc_focal'));
+        }
+        static::created(function (User $user) {
+            if(config('filament-shield.user.enabled', false)){
+                FilamentShield::createRole(config('filament-shield.user.name', 'user'));
+                static::created(function (User $user){
+                    $user->assignRole(config('filament-shield.user.name', 'user'));
+                });
+                static::deleting(function (User $user){
+                    $user->assignRole(config('filament-shield.user.name', 'user'));
+                });
+            }
+            
+            
+        });
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
-        // if ($panel->getId() === 'admin') {
-        //     return str_ends_with($this->email, '@yourdomain.com') && $this->hasVerifiedEmail();
-        // }
-
-        return true;
+        if ($panel->getId() === 'admin') {
+            // return $this->hasRole('admin') || $this->hasRole('super_admin') && $this->hasVerifiedEmail();
+            return $this->hasRole(Utils::getSuperAdminName());
+        } elseif ($panel->getId() === 'user') {
+            return $this->hasRole('user') && $this->hasVerifiedEmail();
+        } elseif ($panel->getId() === 'bwc_focal') {
+            return $this->hasRole('bwc_focal') && $this->hasVerifiedEmail();
+        } elseif ($panel->getId() === 'focal') {
+            return $this->hasRole('focal') && $this->hasVerifiedEmail();
+        } else {
+            return false;
+        }
     }
+
+    // public function canAccessPanel(Panel $panel): bool
+    // {
+    //     return true;
+    // }
 
     public function getFilamentAvatarUrl(): ?string
     {

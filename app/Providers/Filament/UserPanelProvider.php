@@ -31,9 +31,11 @@ class UserPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
+            // ->default()
             ->id('user')
             ->path('user')
+            ->viteTheme('resources/css/filament/user/theme.css')
+
             ->login(Login::class)
             ->registration(Register::class)
             ->emailVerification()
@@ -81,6 +83,22 @@ class UserPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
+                \BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin::make(),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                    ->gridColumns([
+                        'default' => 2,
+                        'sm' => 1
+                    ])
+                    ->sectionColumnSpan(1)
+                    ->checkboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'lg' => 3,
+                    ])
+                    ->resourceCheckboxListColumns([
+                        'default' => 1,
+                        'sm' => 2,
+                    ]),
                 \Jeffgreco13\FilamentBreezy\BreezyCore::make()
                     ->myProfile(
                         shouldRegisterUserMenu: true,

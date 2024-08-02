@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\Filament\UserPanelProvider::class,
+        App\Providers\Filament\FocalPanelProvider::class,
+        App\Providers\Filament\BwcFocalPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
     ])->toArray(),
 

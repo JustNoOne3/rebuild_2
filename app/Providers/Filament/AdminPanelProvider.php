@@ -25,12 +25,15 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Afsakar\FilamentOtpLogin\FilamentOtpLoginPlugin;
 use Kenepa\Banner\BannerPlugin;
 use Filament\Navigation\NavigationGroup;
+use \BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin;
+use \BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->default()
             ->id('admin')
             ->path('ocp-admin-dash')
             ->login(Login::class)
@@ -87,8 +90,8 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Settings'),
             ])
             ->plugins([
-                \BezhanSalleh\FilamentExceptions\FilamentExceptionsPlugin::make(),
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                FilamentExceptionsPlugin::make(),
+                FilamentShieldPlugin::make()
                     ->gridColumns([
                         'default' => 2,
                         'sm' => 1

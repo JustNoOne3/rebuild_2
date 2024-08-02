@@ -8,6 +8,30 @@
     @apply !h-10;
 }
 
+.fi-logo::after {
+    content: "ERS"
+}
+
+
+
+
+/* BODY */
+
+.fi-body {
+    background-image: url('../../../../public/images/dash-bg4.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dark .fi-body {
+    background-image: url('../../../../public/images/dark-dash-bg.png');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+
+
 /* SIDEBAR */
 .fi-sidebar.fi-sidebar-open { @apply lg:!w-1/5 2xl:!w-1/5; }
 
@@ -19,9 +43,24 @@
 
 .fi-sidebar-group > .fi-sidebar-group-items { @apply gap-y-2; }
 
+
+
+/* TOPBAR */
 .fi-topbar nav {
     @apply !ring-0 py-2 !border-none;
+    background-color: #0A083B;
+    opacity: 90%; 
 }
+
+.dark .fi-topbar nav{
+    opacity: 90%;
+}
+
+.fi-topbar-item-label{
+    font-weight: bold;
+}
+
+
 
 /* SIDEBAR ITEM */
 .fi-sidebar-item a {
@@ -60,6 +99,27 @@
         @apply !ml-1;
     }
 }
+/* ADMIN SIDEBAR */
+.fi-sidebar {
+    opacity: 90%;
+    background-image: url('../../../../public/images/sidebar-bg.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+.dark .fi-sidebar {
+    background-image: url('../../../../public/images/sidebar-bg2.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+}
+.dark .fi-topbar nav{
+    background-color: #454A54;
+}
+.fi-sidebar-header{
+    background-color: #140F50;
+}
+
 
 /* Content */
 .fi-main {
@@ -72,11 +132,14 @@
 
 .fi-header-heading {
     @apply !text-2xl text-primary-600 dark:text-primary-400;
+    color: #ffff;
 }
 
 .fi-header-subheading {
     @apply !text-sm;
 }
+
+
 
 /* Filament Actions */
 .fi-dropdown-trigger button.fi-btn {

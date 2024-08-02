@@ -40,8 +40,6 @@ class UsersTableSeeder extends Seeder
             'est_email'=> 'null@mail.com',
         ]);
 
-        $faker = Faker::create();
-
         // Superadmin user
         $sid = Str::uuid();
 
@@ -82,29 +80,91 @@ class UsersTableSeeder extends Seeder
             'model_id' => $sid2,
         ]);
 
-        $roles = DB::table('roles')->whereNot('name', 'super_admin')->get();
-        foreach ($roles as $role) {
-            for ($i = 0; $i < 10; $i++) {
-                $userId = Str::uuid();
-                DB::table('users')->insert([
-                    'id' => $userId,
-                    'username' => $faker->unique()->userName,
-                    'firstname' => $faker->firstName,
-                    'lastname' => $faker->lastName,
-                    'email' => $faker->unique()->safeEmail,
-                    'email_verified_at' => now(),
-                    'password' => Hash::make('password'),
-                    'est_id' => null,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-                DB::table('model_has_roles')->insert([
-                    'role_id' => $role->id,
-                    'model_type' => 'App\Models\User',
-                    'model_id' => $userId,
-                ]);
-            }
-        }
+        // focal
+        $sid3 = Str::uuid();
+        DB::table('users')->insert([
+            'id' => $sid3,
+            'username' => 'focal',
+            'firstname' => 'focal',
+            'lastname' => 'focal',
+            'email' => 'focal@mail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'est_id' => null,
+            'authority' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('model_has_roles')->insert([
+            'role_id' => DB::table('roles')->where('name', 'focal')->value('id'),
+            'model_type' => 'App\Models\User',
+            'model_id' => $sid3,
+        ]);
+
+        // bwc focal
+        $sid4 = Str::uuid();
+        DB::table('users')->insert([
+            'id' => $sid4,
+            'username' => 'bwc',
+            'firstname' => 'bwc',
+            'lastname' => 'bwc',
+            'email' => 'bwc_focal@mail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'est_id' => null,
+            'authority' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('model_has_roles')->insert([
+            'role_id' => DB::table('roles')->where('name', 'bwc_focal')->value('id'),
+            'model_type' => 'App\Models\User',
+            'model_id' => $sid4,
+        ]);
+
+        $sid5 = Str::uuid();
+        DB::table('users')->insert([
+            'id' => $sid5,
+            'username' => 'admin',
+            'firstname' => 'admin',
+            'lastname' => 'admin',
+            'email' => 'bwc_admin@mail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'est_id' => null,
+            'authority' => 1,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        DB::table('model_has_roles')->insert([
+            'role_id' => DB::table('roles')->where('name', 'admin')->value('id'),
+            'model_type' => 'App\Models\User',
+            'model_id' => $sid5,
+        ]);
+
+        // $roles = DB::table('roles')->whereNot('name', 'super_admin')->get();
+        // foreach ($roles as $role) {
+        //     for ($i = 0; $i < 10; $i++) {
+        //         $userId = Str::uuid();
+        //         DB::table('users')->insert([
+        //             'id' => $userId,
+        //             'username' => $faker->unique()->userName,
+        //             'firstname' => $faker->firstName,
+        //             'lastname' => $faker->lastName,
+        //             'email' => $faker->unique()->safeEmail,
+        //             'email_verified_at' => now(),
+        //             'password' => Hash::make('password'),
+        //             'est_id' => null,
+        //             'created_at' => now(),
+        //             'updated_at' => now(),
+        //         ]);
+        //         DB::table('model_has_roles')->insert([
+        //             'role_id' => $role->id,
+        //             'model_type' => 'App\Models\User',
+        //             'model_id' => $userId,
+        //         ]);
+        //     }
+        // }
     }
 }
 
