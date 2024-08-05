@@ -7,6 +7,7 @@ use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 use Illuminate\Support\ServiceProvider;
 use App\Models\User;
+use App\Observers\UserObserver;
 use App\Models\Establishment;
 use App\Observers\EstablishmentObserver;
 use App\Models\Month13th;
@@ -46,7 +47,8 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-    {
+    { 
+        User::observe(UserObserver::class);
         Establishment::observe(EstablishmentObserver::class);
         Month13th::observe(Month13thObserver::class);
         Table::configureUsing(function (Table $table): void {

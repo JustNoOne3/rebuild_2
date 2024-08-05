@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
+            // ->default()
             ->id('admin')
             ->path('ocp-admin-dash')
             ->login(Login::class)

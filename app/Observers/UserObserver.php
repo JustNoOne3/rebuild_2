@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserObserver
 {
@@ -16,7 +17,12 @@ class UserObserver
 
     public function creating(User $user): void
     {
-
+        DB::table('model_has_roles')->insert([
+            'role_id' => DB::table('roles')->where('name', 'user')->value('id'),
+            'model_type' => 'App\Models\User',
+            'model_id' => $user->id,
+        ]);
+        
     }
 
     /**

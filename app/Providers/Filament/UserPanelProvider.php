@@ -31,7 +31,7 @@ class UserPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            // ->default()
+            ->default()
             ->id('user')
             ->path('user')
             ->viteTheme('resources/css/filament/user/theme.css')

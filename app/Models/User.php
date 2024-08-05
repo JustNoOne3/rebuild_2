@@ -27,6 +27,8 @@ use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
 use BezhanSalleh\FilamentShield\Facades\FilamentShield;
 use BezhanSalleh\FilamentShield\Support\Utils;
 
+use Illuminate\Support\Facades\Route;
+
 
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasAvatar, HasName, HasMedia
 {
@@ -112,23 +114,17 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         if(config('filament-shield.bwc_focal.enabled', false)){
             FilamentShield::createRole(name: config('filament-shield.bwc_focal.name', 'bwc_focal'));
         }
-        static::created(function (User $user) {
-            if(config('filament-shield.user.enabled', false)){
-                FilamentShield::createRole(config('filament-shield.user.name', 'user'));
-                static::created(function (User $user){
-                    $user->assignRole(config('filament-shield.user.name', 'user'));
-                });
-                static::deleting(function (User $user){
-                    $user->assignRole(config('filament-shield.user.name', 'user'));
-                });
-            }
-            
-            
-        });
+        if(config('filament-shield.user.enabled', false)){
+            FilamentShield::createRole(name: config('filament-shield.user.name', 'user'));
+        }
     }
 
     public function canAccessPanel(Panel $panel): bool
     {
+        // dd(Route::currentRouteName());
+        if (Route::currentRouteName() === 'filament.user.auth.email-verification.verify' || Route::currentRouteName() === 'filament.user.auth.email-verification.prompt' ) {
+            return true;
+        }
         if ($panel->getId() === 'admin') {
             // return $this->hasRole('admin') || $this->hasRole('super_admin') && $this->hasVerifiedEmail();
             return $this->hasRole(Utils::getSuperAdminName());
@@ -142,11 +138,6 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
             return false;
         }
     }
-
-    // public function canAccessPanel(Panel $panel): bool
-    // {
-    //     return true;
-    // }
 
     public function getFilamentAvatarUrl(): ?string
     {

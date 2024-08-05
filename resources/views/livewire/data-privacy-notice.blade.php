@@ -7,7 +7,6 @@
     width="7xl"
     :close-button="false"
     >
-    @livewireStyles()
         <x-slot name="trigger">
             <x-filament::button>
                 <button class="btn btn-secondary btn-lg mx-auto">
@@ -31,7 +30,7 @@
         </x-slot>
 
         <x-slot name="footerActions">
-            <button type="button" wire:click="closeModal" class="btn hover:bg-sky-950  mx-auto btn-primary" style="width: 300px; color: blue">
+            <button type="button" wire:click="closeModal" class="btn bg-gradient-to-r from-sky-900 to-sky-600 hover:bg-sky-950  mx-auto" style="width: 300px;">
                 <div class="grid grid-cols-2">
                     <x-filament::icon icon="heroicon-o-check-circle" class="mr-2 max-h-12" width="xl" color="#ffff"/>
                     <p style="margin-top: auto; margin-right: 20px; color: #ffff">I Agree</p>
