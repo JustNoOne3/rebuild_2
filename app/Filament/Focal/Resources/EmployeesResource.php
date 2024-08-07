@@ -130,6 +130,7 @@ class EmployeesResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            // ->query(fn(Emoloyee $empolyee))
             ->columns([
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

@@ -18,11 +18,12 @@ use Filament\Forms\Components\Section;
 use Filament\Forms;  
 use Filament\Forms\Get;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Set;
 use Closure;
 use Filament\Notifications\Notification;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\HtmlString;
 
 
 class RegisterEst extends Page implements HasForms
@@ -305,6 +306,15 @@ class RegisterEst extends Page implements HasForms
                                     
                                 ]),
                             Section::make()
+                                ->description(fn():Htmlable => new HtmlString("
+                                        <div style=\"color: gray; font-size: 12px;\">Max File Size: 10mb</div>
+                                        <div style=\"color: gray; font-size: 12px;\">Accepted File Types</div>
+                                        <div style=\"color: gray; font-size: 12px;\">&nbsp; - PDF</div>
+                                        <div style=\"color: gray; font-size: 12px;\">&nbsp; - DOC/DOCX</div>
+                                        <div style=\"color: gray; font-size: 12px;\">&nbsp; - JPEG</div>
+                                        <div style=\"color: gray; font-size: 12px;\">&nbsp; - PNG</div>
+                                    ")
+                                )
                                 ->columns(1)
                                 ->schema([
                                     Forms\Components\FileUpload::make('est_permit')

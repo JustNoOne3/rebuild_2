@@ -252,6 +252,7 @@ class EstRegister extends Component implements HasForms
                                     
                                 ]),
                             Section::make()
+                                ->description('Accepted files \n - PDF')
                                 ->columns(1)
                                 ->schema([
                                     Forms\Components\FileUpload::make('est_permit')
