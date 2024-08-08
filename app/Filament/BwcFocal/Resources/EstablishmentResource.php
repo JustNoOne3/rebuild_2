@@ -463,7 +463,7 @@ class EstablishmentResource extends Resource
                             $record->save();
                             
                             session()->put('est_id', $record->est_id);
-                            return redirect()->route('admin-certificate');
+                            return redirect()->route('bwc_focal-certificate');
                         }
                     ),
                 Tables\Actions\Action::make('remove_cert')

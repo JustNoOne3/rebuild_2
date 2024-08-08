@@ -49,6 +49,14 @@ Route::get('admin/certificate', Certificate::class)
     ->middleware(Authenticate::class);
     // ->middleware(Spatie\Csp\AddCspHeaders::class);
 
+Route::get('focal/certificate', Certificate::class)
+    ->name('focal-certificate')
+    ->middleware(Authenticate::class);
+
+Route::get('bwc_focal/certificate', Certificate::class)
+    ->name('bwc_focal-certificate')
+    ->middleware(Authenticate::class);
+
 Route::get('user/underConstruction', UnderConstruction::class)
     ->name('user-page-underconstruction')
     ->middleware(Authenticate::class);

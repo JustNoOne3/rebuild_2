@@ -347,7 +347,7 @@ class RegisterEst extends Page implements HasForms
                                 ->schema([
                                     Forms\Components\TextInput::make('est_fax')
                                         ->maxLength(255)
-                                        ->label('Fax No.'),
+                                        ->label('Telephone Number.'),
                                     Forms\Components\TextInput::make('est_contactNum')
                                         ->required()
                                         ->label('Contact No.')

@@ -6,7 +6,7 @@
     class="bg-gray-600/75 mw-auto w-full"
     width="7xl"
     :close-button="false"
-    >
+    >   
         <x-slot name="trigger">
             <x-filament::button>
                 <button class="btn btn-secondary btn-lg mx-auto">

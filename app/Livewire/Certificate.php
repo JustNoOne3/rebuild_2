@@ -15,15 +15,17 @@ class Certificate extends Component
         }
         // dd(session()->get('est_id'));
         $record = Establishment::query()->where('est_id', session()->get('est_id'))->first();
-        session()->put('est_id', 0);
+        // session()->put('est_id', 0); // uncomment to access cert when refreshed
         $this->est_reg = $record->est_id;
-        $this->est_name = $record->est_name;
+        $this->est_name = strtoupper($record->est_name);
 
         $this->region = Geocode::query()->where('geo_id', $record->region_id)->value('geo_name');
         $this->province = Geocode::query()->where('geo_id', $record->province_id)->value('geo_name');
         $city = Geocode::query()->where('geo_id', $record->city_id)->value('geo_name');
         $barangay = Geocode::query()->where('geo_id', $record->barangay_id)->value('geo_name');
         $this->est_address = $record->est_street." "."Brgy. ".$barangay.","." ".$city.","." ".$this->province;
+        $this->numWork = $record->est_numworkTotal;
+        $this->regDate = $record->est_certIssuance;
 
         $dateParts = explode('-', $record->est_certIssuance);
 
@@ -71,8 +73,6 @@ class Certificate extends Component
             default:
                 $this->month = 'Invalid';
         }
-
-        
     }
     public function render()
     {
