@@ -28,7 +28,7 @@
             .cert-img{
                 max-width: 250px; 
                 /* margin: auto; */
-                margin-top: 15%;
+                /* margin-top: 15%; */
                 margin-left: 25%;
                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
             }
@@ -61,8 +61,12 @@
             }
 
             .issued-on{
-                margin-top: 2%;
-                margin-left: 35%;
+                text-align: center;
+                color: gray;
+                font-size: 12px;
+                margin-top: 15%;
+                margin-bottom: 2%;
+                margin-left: 15%;
             }
             .sec-text{
                 margin-left: 10%;
@@ -158,15 +162,17 @@
         <div class="preview-cont">
             <div class="grid grid-flow-col p-10">
                 <div class="grid p-10">
+                    <p class="issued-on">
+                        Rule 1020 Registration of Establishment <br>
+                        Issued on: &nbsp {{$this->month}} {{$this->year}}
+                    </p>
                     <img class="cert-img drop-shadow-2xl" src="{{asset('certs/est_cert.png')}}" alt="">
                     <div class="in-textt">
                         <p class="in_name">{{$this->est_name}}</p>
                         <p class="in_address">{{$this->est_address}}</p>
                         <p class="in_certdate">Given this {{$this->day}}th day of {{$this->month}} {{$this->year}},<br> {{$this->province}}, {{$this->region}}.</p>
                     </div>
-                    <p class="issued-on">
-                        Issued on: &nbsp {{$this->month}} {{$this->year}}
-                    </p>
+                    
                 </div>
                 <div class="p-10">
                     <div class="sec-text">
