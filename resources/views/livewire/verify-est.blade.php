@@ -63,14 +63,14 @@
             .issued-on{
                 text-align: center;
                 color: gray;
-                font-size: 10px;
+                font-size: 12px;
                 margin-top: 15%;
                 margin-bottom: 2%;
-                margin-left: 30%;
+                margin-left: 15%;
             }
             .sec-text{
                 margin-left: 10%;
-                margin-top: 17%;
+                margin-top: 20%;
                 text-wrap: wrap;
                 font-weight: bold;
                 font-size: 20px;
@@ -78,7 +78,7 @@
             }
             .status-cont{
                 margin-left: 10%;
-                margin-top: 2%;
+                margin-top: 5%;
             }
             .printing-cont{
                 display: none;
@@ -91,7 +91,7 @@
                 height: 60px;
                 border-radius: 10px;
                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-                margin-top: 5%;
+                margin-top: 10%;
                 color: white;
                 font-weight: bold;
 
@@ -104,7 +104,7 @@
                 border-width: medium;
                 border-color: rgb(198, 228, 255);
                 box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-                margin-top: 5%;
+                margin-top: 10%;
                 color: white;
                 font-weight: bold;
 
@@ -163,7 +163,8 @@
             <div class="grid grid-flow-col p-10">
                 <div class="grid p-10">
                     <p class="issued-on">
-                        Rule 1020 <br> Registration of Establishment
+                        Rule 1020 Registration of Establishment <br>
+                        Issued on: &nbsp {{$this->month}} {{$this->year}}
                     </p>
                     <img class="cert-img drop-shadow-2xl" src="{{asset('certs/est_cert.png')}}" alt="">
                     <div class="in-textt">
@@ -186,18 +187,7 @@
                             Registration Date: &nbsp {{$this->regDate}}
                         </p>
                     </div>
-                    <button onclick="window.print()">
-                        Print Certificate
-                    </button>
                 </div>
-            </div>
-        </div>
-        <div class="printing-cont bg-slate-900">
-            <img class="cert-img" src="{{asset('certs/est_cert.png')}}" alt="">
-            <div class="text-div"  >
-                <p class="est_name">{{$this->est_name}}</p>
-                <p class="est_address">{{$this->est_address}}</p>
-                <p class="est_certdate">Given this {{$this->day}}th day of {{$this->month}} {{$this->year}},<br> {{$this->province}}, {{$this->region}}.</p>
             </div>
         </div>
     </div>

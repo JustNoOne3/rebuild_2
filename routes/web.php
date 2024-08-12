@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Filament\Pages\Register;
 use App\Filament\User\Pages\RegisterEst;
+use App\Livewire\VerifyEst;
 use App\Livewire\Certificate;
 
 use App\Http\Middleware\Authenticate;
@@ -33,6 +34,9 @@ use App\Filament\User\Resources\FlexibleWorkResource\Pages\FlexibleWorkCreate;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+Route::get('verify/{record}', VerifyEst::class)
+    ->name('verify');
 
 Route::get('register-est', RegisterEst::class)
     ->name('register-est')
