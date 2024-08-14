@@ -6,6 +6,11 @@ use Livewire\Component;
 use App\Models\Establishment;
 use App\Models\Geocode;
 
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
+
 class Certificate extends Component
 {
     public function mount(){
@@ -13,7 +18,6 @@ class Certificate extends Component
         if (!session()->has('est_id') || session()->get('est_id') <= 0) {
             abort(404);
         }
-        // dd(session()->get('est_id'));
         $record = Establishment::query()->where('est_id', session()->get('est_id'))->first();
         // session()->put('est_id', 0); // uncomment to access cert when refreshed
         $this->est_reg = $record->est_id;
@@ -73,6 +77,14 @@ class Certificate extends Component
             default:
                 $this->month = 'Invalid';
         }
+
+        // $renderer = new ImageRenderer(
+        //     new RendererStyle(400),
+        //     new ImagickImageBackEnd()
+        // );
+        // $writer = new Writer($renderer);
+        // $writer->writeFile($this->est_reg, 'qrcode.png');
+        // $this->qrCode = $writer;
     }
     public function render()
     {

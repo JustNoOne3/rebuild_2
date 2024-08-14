@@ -204,9 +204,9 @@ class RegisterEst extends Page implements HasForms
                                         ->native(false)
                                         ->label("Establishment Classification")
                                         ->options([
-                                            1 => 'Head Office',
-                                            2 => 'Branch',
-                                            3 => 'Franchise',
+                                            'Head Office' => 'Head Office',
+                                            'Branch' => 'Branch',
+                                            'Franchise' => 'Franchise',
                                         ]),
                                     Forms\Components\TextInput::make('est_tin')
                                         ->required()
@@ -302,7 +302,19 @@ class RegisterEst extends Page implements HasForms
                                                     return intval($get('est_numworkMale')) + intval($get('est_numworkFemale'));
                                                 })
                                                 ->label('Total Employees'),
+                                            Forms\Components\TextInput::make('est_numworkTotal1')
+                                                ->readOnly()
+                                                ->rules([
+                                                    fn (Get $get): Closure => function (string $attribute, $value, Closure $fail) use ($get) {
+                                                        $val1 = intval($get('est_numworkManager')) + intval($get('est_numworkSupervisor')) + intval($get('est_numworkRanks'));
+                                                        $val2 = intval($get('est_numworkMale')) + intval($get('est_numworkFemale'));
+                                                        if ($val1 != $val2) {
+                                                            $fail("The {$attribute} is invalid.");
+                                                        }
+                                                    },
+                                                ])
                                         ]),
+                                        
                                     
                                 ]),
                             Section::make()

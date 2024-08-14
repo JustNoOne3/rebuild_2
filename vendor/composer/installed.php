@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'riodwanto/superduper-filament-starter-kit',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '3bb75cc057c59b4671551a25078db2f466c76a86',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -802,6 +802,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'milon/barcode' => array(
+            'pretty_version' => 'v11.0.0',
+            'version' => '11.0.0.0',
+            'reference' => '1f4031adb52146bb7fbe88ef42214011376f9cbe',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../milon/barcode',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'mockery/mockery' => array(
             'pretty_version' => '1.6.12',
             'version' => '1.6.12.0',
@@ -1206,9 +1215,9 @@
             'dev_requirement' => false,
         ),
         'riodwanto/superduper-filament-starter-kit' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '3bb75cc057c59b4671551a25078db2f466c76a86',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

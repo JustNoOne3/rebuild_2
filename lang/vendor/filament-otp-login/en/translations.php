@@ -4,11 +4,12 @@ return [
     'otp_code' => 'OTP Code',
 
     'mail' => [
-        'subject' => 'OTP Code',
-        'greeting' => 'Hello!',
-        'line1' => 'Your OTP code is: :code',
-        'line2' => 'This code will be valid for :seconds seconds.',
-        'line3' => 'If you did not request a code, please ignore this email.',
+        'subject' => 'Online Compliance Portal - OTP Code',
+        'greeting' => 'Welcome to the Online Compliance Portal!',
+        'line1' => 'You are receiving this email to confirm your identity before logging in to the Online Compliance portal',
+        'line2' => 'Your OTP code is: :code',
+        'line3' => 'This code will be valid for :seconds seconds.',
+        'line4' => 'If you think you are receiving this email by mistake, please disregard this email or you may contact us at .',
         'salutation' => 'Best Regards, :app_name',
     ],
 

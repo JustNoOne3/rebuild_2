@@ -42,10 +42,11 @@ class SendOtpCode extends Notification
         return (new MailMessage)
             ->subject(__('filament-otp-login::translations.mail.subject'))
             ->greeting(__('filament-otp-login::translations.mail.greeting'))
-            ->line(__('filament-otp-login::translations.mail.line1', ['code' => $this->code]))
-            ->line(__('filament-otp-login::translations.mail.line2', ['seconds' => config('filament-otp-login.otp_code.expires')]))
-            ->line(__('filament-otp-login::translations.mail.line3'))
-            ->salutation(__('filament-otp-login::translations.mail.salutation', ['app_name' => config('app.name')]));
+            ->line(__('filament-otp-login::translations.mail.line1'))
+            ->line(__('filament-otp-login::translations.mail.line2', ['code' => $this->code]))
+            ->line(__('filament-otp-login::translations.mail.line3', ['seconds' => config('filament-otp-login.otp_code.expires')]))
+            ->line(__('filament-otp-login::translations.mail.line4'))
+            ->salutation(__('filament-otp-login::translations.mail.salutation', ['app_name' => 'Online Compliance Portal']));
     }
 
     /**

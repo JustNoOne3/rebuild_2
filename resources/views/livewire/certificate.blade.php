@@ -60,13 +60,17 @@
                 
             }
 
+            .img-cont{
+                padding-left: 5%;
+            }
+
             .issued-on{
                 text-align: center;
                 color: gray;
                 font-size: 10px;
                 margin-top: 15%;
                 margin-bottom: 2%;
-                margin-left: 30%;
+                /* margin-left: 30%; */ 
             }
             .sec-text{
                 margin-left: 10%;
@@ -161,7 +165,7 @@
     <div>
         <div class="preview-cont">
             <div class="grid grid-flow-col p-10">
-                <div class="grid p-10">
+                <div class="grid p-10 img-cont">
                     <p class="issued-on">
                         Rule 1020 <br> Registration of Establishment
                     </p>
